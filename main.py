@@ -12,16 +12,26 @@ def get_files_list(path):
     :param path:
     :return: files
     '''
-    files = listdir(path)  # получение списка файлов в дирректории путь к которой передан в кач-ве параметра
-
+    old_files_list = listdir(path)  # получение списка файлов в дирректории путь к которой передан в кач-ве параметра
+    new_files_list = []
     # Чистка списка
-    for file in files:
-        if '.jpg' or '.JPG' or '.png' or '.PNG' or '.JPEG' or '.jpeg' in file:  # отбор файла с нужным расширением
-            pass
+    for file in old_files_list:
+        if '.jpg' in file:  # отбор файла с нужным расширением
+            new_files_list.append(file)
+        elif '.JPG' in file:
+            new_files_list.append(file)
+        elif '.png' in file:
+            new_files_list.append(file)
+        elif '.PNG' in file:
+            new_files_list.append(file)
+        elif '.jpeg' in file:
+            new_files_list.append(file)
+        elif '.JPEG' in file:
+            new_files_list.append(file)
         else:
-            files.remove(file)
+            old_files_list.remove(file)
 
-    return files
+    return new_files_list
 
 
 def rename_files(files_list, path):
